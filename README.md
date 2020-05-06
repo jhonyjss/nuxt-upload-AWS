@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # upload
 
-> My polished Nuxt.js project
+> Projeto desenvolvido para upload de fotos utilizando a AWS com VUE/NUXT JS | NODE JS | SQLITE
 
 ## Build Setup
 
@@ -18,9 +17,15 @@ $ yarn start
 
 # generate static project
 $ yarn generate
+
+# Para utilizar usuário teste acesse a rota
+$ /api/db/user
+
+# Usuário teste:
+$ Usuario: teste | senha: 12345admin
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Para mais detalhes sobrevantagens e como utilizar o [Nuxt.js docs](https://nuxtjs.org).
 =======
 # nuxt-upload-AWS
 Projeto pessoal para upload de photos à AWS
