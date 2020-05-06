@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # upload
 
 > My polished Nuxt.js project
@@ -20,3 +21,7 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+=======
+# nuxt-upload-AWS
+Projeto pessoal para upload de photos à AWS
+>>>>>>> 8304ba9a29dd5a3ccc0c0e59afa72d4c7593cd8d
