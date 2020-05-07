@@ -35,9 +35,9 @@ db.serialize(function () {
         db.run(insert, ["admin", "jhony.jss@gmail.com", md5("123456")])
     }) */
     //INSERT USERS
-    router.get('/db', function (req, res, next) {
+    router.get('/db/user', function (req, res, next) {
         res.json({ foo: 1 })
-        db.run('INSERT INTO users(name, email, password) VALUES(?, ?, ?)', ['Emily', 'mlydionisio1986@hotmail.com', md5('emidio6891')], (err) => {
+      db.run('INSERT INTO users(name, email, password) VALUES(?, ?, ?)', ['Teste', 'teste@demo.com', md5('12345admin')], (err) => {
         if (err) {
           return console.log(err.message);
         }
