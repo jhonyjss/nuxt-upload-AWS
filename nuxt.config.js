@@ -36,7 +36,9 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/gallery.js', ssr: false },
+    { src: '~/plugins/lazyload', ssr: true },
   ],
+  lazy: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -53,10 +55,9 @@ module.exports = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    'nuxt-lazy-load',
     'cookie-universal-nuxt'
   ],
-  
+
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
@@ -64,6 +65,7 @@ module.exports = {
   axios: {
     baseURL: "/api"
   },
+
 
   auth: {
     tokenRequired: false,
@@ -75,23 +77,23 @@ module.exports = {
       home: false
     },
     strategies: {
-     /*  facebook: {
-        client_id: process.env.FACEBOOK_CLIENT_ID,
-        userinfo_endpoint: false,
-        scope: ['public_profile', 'email'],
-        redirect_uri: `${process.env.API_URL}auth/login/facebook/callback`
-      },
-      google: {
-        client_id: process.env.GOOGLE_CLIENT_ID,
-        user: false,
-        redirect_uri: `${process.env.API_URL}auth/login/google/callback`
-      }, */
+      /*  facebook: {
+         client_id: process.env.FACEBOOK_CLIENT_ID,
+         userinfo_endpoint: false,
+         scope: ['public_profile', 'email'],
+         redirect_uri: `${process.env.API_URL}auth/login/facebook/callback`
+       },
+       google: {
+         client_id: process.env.GOOGLE_CLIENT_ID,
+         user: false,
+         redirect_uri: `${process.env.API_URL}auth/login/google/callback`
+       }, */
       local: {
         endpoints: {
           login: {
             url: 'auth/login',
             method: 'post',
-            withCredentials: true, 
+            withCredentials: true,
             propertyName: 'data'
           },
           logout: {
@@ -137,7 +139,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
   }
 }
