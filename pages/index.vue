@@ -11,8 +11,21 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field v-model="fields.email" label="Login" name="login" prepend-icon="person" type="text" />
-                  <v-text-field v-model="fields.password" id="password" label="Password" name="password" prepend-icon="lock" type="password" />
+                  <v-text-field
+                    v-model="fields.email"
+                    label="Login"
+                    name="login"
+                    prepend-icon="person"
+                    type="text"
+                  />
+                  <v-text-field
+                    v-model="fields.password"
+                    id="password"
+                    label="Password"
+                    name="password"
+                    prepend-icon="lock"
+                    type="password"
+                  />
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -28,43 +41,39 @@
 </template>
 
 <script>
-import {
-    mapGetters
-  } from "vuex";
-  export default {
-    middleware: ['auth'],
-    props: {
-      source: String,
-    },
-    data() {
-      return {
-        fields:{
-          email:'jhony.jss@gmail.com',
-          password:'admin1234'
-        }
+import { mapGetters } from "vuex";
+export default {
+  middleware: ["auth"],
+  props: {
+    source: String
+  },
+  data() {
+    return {
+      fields: {
+        email: "",
+        password: ""
       }
-    },
+    };
+  },
 
-    beforeMount() {
-      if(this.isAuthenticated){
-        this.$router.push('/photos');
-      }
-    },
+  beforeMount() {
+    if (this.isAuthenticated) {
+      this.$router.push("/photos");
+    }
+  },
 
-    computed: {
-      ...mapGetters(['loggedUser', 'isAuthenticated'])
-    },
+  computed: {
+    ...mapGetters(["loggedUser", "isAuthenticated"])
+  },
 
-    methods: {
-      async loggin(){
+  methods: {
+    async loggin() {
+      await this.$auth.loginWith("local", {
+        data: this.fields
+      });
 
-        await this.$auth.loginWith('local', {
-          data: this.fields,
-        })
-        
-        this.$router.push('/photos')
-      }
-    },
+      this.$router.push("/photos");
+    }
   }
-
+};
 </script>
