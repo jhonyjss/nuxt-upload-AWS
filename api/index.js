@@ -1,6 +1,10 @@
 import express from 'express'
 import session from 'express-session';
+import bodyParser from 'body-parser'
 const app = express()
+app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
+
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
   resave: true,

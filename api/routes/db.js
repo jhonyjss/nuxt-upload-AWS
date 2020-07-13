@@ -36,6 +36,7 @@ db.serialize(function () {
   }) */
   //INSERT USERS
   router.post('/db/user', function (req, res, next) {
+    console.log(req.body);
     db.run('INSERT INTO users(name, email, password) VALUES(?, ?, ?)',
       [req.body.name, req.body.email, md5(req.body.password)], (err) => {
         if (err) {
