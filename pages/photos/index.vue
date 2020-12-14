@@ -1,6 +1,10 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
+    <v-navigation-drawer
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      app
+    >
       <v-list dense>
         <template v-for="item in items">
           <v-row v-if="item.heading" :key="item.heading" align="center">
@@ -46,7 +50,12 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="blue darken-3" dark>
+    <v-app-bar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      app
+      color="blue darken-3"
+      dark
+    >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title style="width: 300px" class="ml-0 pl-4">
         <span class="hidden-sm-and-down">Foto upload AWS</span>
@@ -68,11 +77,14 @@
       </v-btn>
       <v-btn icon large>
         <v-avatar size="32px" item>
-          <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify" />
+          <v-img
+            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+            alt="Vuetify"
+          />
         </v-avatar>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <v-row>
           <v-col cols="12">
@@ -82,7 +94,7 @@
               label-idle="CLIQUE AQUI PARA FAZER UPLOAD DAS SUAS IMAGENS"
               allow-multiple="true"
               accepted-file-types="image/jpeg, image/png"
-              :server="{process}"
+              :server="{ process }"
               v-on:init="handleFilePondInit"
               @beforeaddfile="beforeAddFile"
               v-bind:files="myFiles"
@@ -94,15 +106,23 @@
         <v-row v-if="!openAlbum">
           <v-col v-for="album in albums" :key="album" sm="6" md="2" lg="2">
             <div class="folders text-center" @click="selectAlbum(album)" v-lazy>
-              <v-icon style="font-size: 10rem; color:#5f27cd;">mdi-folder</v-icon>
-              <span>{{album}}</span>
+              <v-icon style="font-size: 10rem; color:#5f27cd;"
+                >mdi-folder</v-icon
+              >
+              <span>{{ album }}</span>
             </div>
           </v-col>
         </v-row>
 
-        <folder ref="folder" v-if="openAlbum" :album="selectedAlbum" :user="loggedUser" :s3="s3" />
+        <folder
+          ref="folder"
+          v-if="openAlbum"
+          :album="selectedAlbum"
+          :user="loggedUser"
+          :s3="s3"
+        />
       </v-container>
-    </v-content>
+    </v-main>
     <v-btn bottom color="pink" dark fab fixed right @click="dialog = !dialog">
       <v-icon>mdi-folder</v-icon>
     </v-btn>
@@ -113,7 +133,11 @@
           <v-row class="mx-2">
             <v-col class="align-center justify-space-between" cols="12">
               <v-row align="center" class="mr-0">
-                <v-text-field placeholder="Nome da pasta" v-model="folder" required />
+                <v-text-field
+                  placeholder="Nome da pasta"
+                  v-model="folder"
+                  required
+                />
               </v-row>
             </v-col>
           </v-row>
@@ -208,14 +232,8 @@ export default {
     this.folder = this.loggedUser.name;
 
     if (this.isAuthenticated) {
-      // Inicializar o provedor de credenciais do Amazon Cognito
-      AWS.config.region = process.env.AWS_REGION; // Região
-      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: process.env.AWS_COGNITO_KEY
-      });
-
       this.s3 = new AWS.S3({
-        apiVersion: "2006-03-01",
+        region: process.env.AWS_REGION,
         Bucket: process.env.AWS_BUCKET,
         accessKeyId: process.env.AWS_ACCESS_KEY,
         secretAccessKey: process.env.AWS_S3_SECRET

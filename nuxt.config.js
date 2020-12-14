@@ -1,79 +1,82 @@
-const colors = require('vuetify/es5/util/colors').default
+const colors = require("vuetify/es5/util/colors").default;
 
 module.exports = {
-  mode: 'spa',
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: "%s - " + process.env.npm_package_name,
+    title: process.env.npm_package_name || "",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+      }
     ]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: { color: "#fff" },
   /*
-  ** Global CSS
-  */
-  css: [
-  ],
+   ** Global CSS
+   */
+  css: [],
 
-  serverMiddleware: [
-    '~/api/index'
-  ],
+  serverMiddleware: ["~/api/index"],
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [
-    { src: '~/plugins/gallery.js', ssr: false },
-    { src: '~/plugins/lazyload', ssr: true },
+    { src: "~/plugins/gallery.js", ssr: false },
+    { src: "~/plugins/lazyload", ssr: true }
   ],
   lazy: true,
   /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    '@nuxtjs/vuetify',
-  ],
+   ** Nuxt.js dev-modules
+   */
+  buildModules: ["@nuxtjs/vuetify"],
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/auth',
-    '@nuxtjs/pwa',
+    "@nuxtjs/axios",
+    "@nuxtjs/auth",
+    "@nuxtjs/pwa",
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    'cookie-universal-nuxt'
+    "@nuxtjs/dotenv",
+    "cookie-universal-nuxt"
   ],
 
   /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+   ** Axios module configuration
+   ** See https://axios.nuxtjs.org/options
+   */
   axios: {
     baseURL: "/api"
   },
 
+  ssr: false,
 
   auth: {
     tokenRequired: false,
     tokenType: false,
     redirect: {
-      login: '/',
-      logout: '/',
-      user: '/photos',
+      login: "/",
+      logout: "/",
+      user: "/photos",
       home: false
     },
     strategies: {
@@ -91,32 +94,32 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-            url: 'auth/login',
-            method: 'post',
+            url: "auth/login",
+            method: "post",
             withCredentials: true,
-            propertyName: 'data'
+            propertyName: "data"
           },
           logout: {
-            url: 'auth/logout',
-            method: 'post',
-            propertyName: 'token'
+            url: "auth/logout",
+            method: "post",
+            propertyName: "token"
           },
           user: {
-            url: 'auth/user',
-            method: 'get',
+            url: "auth/user",
+            method: "get",
             propertyName: false
           },
-          logout: false,
+          logout: false
         }
       }
     }
   },
   /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
     theme: {
       dark: false,
       themes: {
@@ -133,13 +136,13 @@ module.exports = {
     }
   },
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
+    cache: true,
     /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   }
-}
+};

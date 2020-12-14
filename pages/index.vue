@@ -1,12 +1,14 @@
 <template>
   <v-app id="inspire">
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="warning" dark flat>
-                <v-toolbar-title>Faça o login com seu usuário e senha</v-toolbar-title>
+                <v-toolbar-title
+                  >Faça o login com seu usuário e senha</v-toolbar-title
+                >
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
@@ -36,7 +38,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -45,14 +47,14 @@ import { mapGetters } from "vuex";
 export default {
   middleware: ["auth"],
   props: {
-    source: String,
+    source: String
   },
   data() {
     return {
       fields: {
         email: "",
-        password: "",
-      },
+        password: ""
+      }
     };
   },
 
@@ -63,17 +65,17 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["loggedUser", "isAuthenticated"]),
+    ...mapGetters(["loggedUser", "isAuthenticated"])
   },
 
   methods: {
     async loggin() {
       await this.$auth.loginWith("local", {
-        data: this.fields,
+        data: this.fields
       });
 
       this.$router.push("/photos");
-    },
-  },
+    }
+  }
 };
 </script>
