@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.12.3",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.3.2",
-    "aws-sdk": "^2.809.0",
+    "aws-sdk": "^2.814.0",
     "cookie-universal-nuxt": "^2.1.4",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
