@@ -26,7 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
     "nuxt": "^2.14.11",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.3",
     "uuid": "^8.3.2",
     "vue-filepond": "^6.0.3",
     "vue-gallery": "^2.0.1",
