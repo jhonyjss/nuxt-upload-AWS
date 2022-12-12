@@ -18,7 +18,7 @@
     "aws-sdk": "^2.809.0",
     "cookie-universal-nuxt": "^2.1.4",
     "cross-env": "^7.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.1",
     "filepond": "^4.24.0",
     "filepond-plugin-file-validate-type": "^1.2.5",
